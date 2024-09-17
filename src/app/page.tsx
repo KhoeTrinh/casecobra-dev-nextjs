@@ -1,9 +1,32 @@
+import StarRated from '@/components/5StarRated';
+import { Icons } from '@/components/Icons';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Phone from '@/components/Phone';
+import { Reviews } from '@/components/Reviews';
 import { Check, Star } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
+    const reviewUser = [
+        {
+            description1:
+                'The case feels durable and I even got a compliment on the design. Had the case for two and a half months now and',
+            highlightdescrition: 'the image is super clear',
+            description2:
+                ', on the case I had before, the image started fading into yellow-ish color after a couple weeks. Love it.',
+            userImg: '/users/user-1.png',
+            name: 'Jonathan',
+        },
+        {
+            description1:
+                'I usually keep my phone together with my keys in my pocket and that led to some pretty heavy scratchmarks on all of my last phone cases. This one, besides a barely noticeable scratch on the corner,',
+            highlightdescrition: 'looks brand new after about half a year',
+            description2: '. I dig it.',
+            userImg: '/users/user-4.jpg',
+            name: 'Josh',
+        },
+    ];
+
     return (
         <div className='bg-slate-50'>
             <section>
@@ -125,26 +148,7 @@ export default function Home() {
                                 sm:items-start'
                                 >
                                     <div className='flex gap-0.5'>
-                                        <Star
-                                            className='h-4 w-4 text-green-600 
-                                    fill-green-600'
-                                        />
-                                        <Star
-                                            className='h-4 w-4 text-green-600 
-                                    fill-green-600'
-                                        />
-                                        <Star
-                                            className='h-4 w-4 text-green-600 
-                                    fill-green-600'
-                                        />
-                                        <Star
-                                            className='h-4 w-4 text-green-600 
-                                    fill-green-600'
-                                        />
-                                        <Star
-                                            className='h-4 w-4 text-green-600 
-                                    fill-green-600'
-                                        />
+                                        <StarRated />
                                     </div>
 
                                     <p>
@@ -203,10 +207,75 @@ export default function Home() {
                         text-balance !leading-tight font-bold text-5xl md:text-6xl 
                         text-gray'
                         >
-                            What our <span className='relative px-2'>customers</span> say
+                            What our{' '}
+                            <span className='relative px-2'>
+                                customers
+                                <Icons.underline
+                                    className='hidden sm:block pointer-events-none 
+                                absolute inset-x-0 -bottom-6 text-green-600'
+                                />
+                            </span>{' '}
+                            say
                         </h2>
+                        <Image
+                            src='/snake-2.png'
+                            alt=''
+                            className='w-24 prder-0 lg:order-2'
+                            width={300}
+                            height={100}
+                        />
+                    </div>
+
+                    <div
+                        className='mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 
+                    lg:max-w-none lg:grid-cols-2 gap-y-16'
+                    >
+                        {reviewUser.map((user, index) => (
+                            <div
+                                className='flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20'
+                                key={index}
+                            >
+                                <div className='flex gap-0.5 mb-2'>
+                                    <StarRated />
+                                </div>
+
+                                <div className='text-lg leading-8'>
+                                    <p>
+                                        &quot;{user.description1}{' '}
+                                        <span className='p-0.5 bg-slate-800 text-white'>
+                                            {user.highlightdescrition}
+                                        </span>
+                                        {user.description2}&quot;{' '}
+                                    </p>
+                                </div>
+                                <div className='flex gap-4 mt-2'>
+                                    <Image
+                                        src={user.userImg}
+                                        alt=''
+                                        className='rounded-full h-12 w-12 object-cover'
+                                        width={300}
+                                        height={100}
+                                    />
+                                    <div className='flex flex-col'>
+                                        <p className='font-semibold'>
+                                            {user.name}
+                                        </p>
+                                        <div className='flex gap-1.5 items-center text-zinc-600'>
+                                            <Check className='w-4 h-4 stroke-[3px] text-green-600' />
+                                            <p className='text-sm'>
+                                                Verified Purchase
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </MaxWidthWrapper>
+
+                <div className='pt-16'>
+                    <Reviews />
+                </div>
             </section>
         </div>
     );
