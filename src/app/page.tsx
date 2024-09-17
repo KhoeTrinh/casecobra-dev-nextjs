@@ -180,8 +180,31 @@ export default function Home() {
                                 width={300}
                                 height={100}
                             />
-                            <Phone className='w-64' imgSrc='/testimontials/1.jpg' />
+                            <Phone
+                                className='w-64'
+                                imgSrc='/testimontials/1.jpg'
+                            />
                         </div>
+                    </div>
+                </MaxWidthWrapper>
+            </section>
+
+            <section className='bg-slate-100 py-24'>
+                <MaxWidthWrapper
+                    className='flex flex-col items-center gap-16
+                sm:gap-32'
+                >
+                    <div
+                        className='flex flex-col lg:flex-row items-center gap-4
+                    sm:gap-6'
+                    >
+                        <h2
+                            className='order-1 mt-2 tracking-tight text-center 
+                        text-balance !leading-tight font-bold text-5xl md:text-6xl 
+                        text-gray'
+                        >
+                            What our <span className='relative px-2'>customers</span> say
+                        </h2>
                     </div>
                 </MaxWidthWrapper>
             </section>
