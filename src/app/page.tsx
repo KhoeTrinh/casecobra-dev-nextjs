@@ -1,12 +1,11 @@
 import StarRated from '@/components/5StarRated';
+import { userImage, userReview } from '@/components/array';
 import { Icons } from '@/components/Icons';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Phone from '@/components/Phone';
 import { Reviews } from '@/components/Reviews';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
-import userReview from '@/components/userReview';
-import userImage from '@/components/userImage';
 
 export default function Home() {
     const reviewUser = userReview;
