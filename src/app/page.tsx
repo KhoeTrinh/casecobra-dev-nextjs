@@ -6,9 +6,11 @@ import { Reviews } from '@/components/Reviews';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
 import userReview from '@/components/userReview';
+import userImage from '@/components/userImage';
 
 export default function Home() {
-    const reviewUser = userReview
+    const reviewUser = userReview;
+    const imageUser = userImage;
 
     return (
         <div className='bg-slate-50'>
@@ -84,46 +86,17 @@ export default function Home() {
                             sm:items-start gap-5'
                             >
                                 <div className='flex -space-x-4'>
-                                    <Image
-                                        src='/users/user-1.png'
-                                        alt=''
-                                        className='inline-block h-10 w-10 rounded-full ring-2 
-                                        ring-slate-100'
-                                        width={300}
-                                        height={100}
-                                    />
-                                    <Image
-                                        src='/users/user-2.png'
-                                        alt=''
-                                        className='inline-block h-10 w-10 rounded-full ring-2 
-                                        ring-slate-100'
-                                        width={300}
-                                        height={100}
-                                    />
-                                    <Image
-                                        src='/users/user-3.png'
-                                        alt=''
-                                        className='inline-block h-10 w-10 rounded-full ring-2 
-                                        ring-slate-100'
-                                        width={300}
-                                        height={100}
-                                    />
-                                    <Image
-                                        src='/users/user-4.jpg'
-                                        alt=''
-                                        className='inline-block h-10 w-10 rounded-full ring-2 
-                                        ring-slate-100'
-                                        width={300}
-                                        height={100}
-                                    />
-                                    <Image
-                                        src='/users/user-5.jpg'
-                                        alt=''
-                                        className='inline-block object-cover h-10 w-10 
+                                    {imageUser.map((image, index) => (
+                                        <Image
+                                            src={`/users/${image}`}
+                                            alt=''
+                                            className='inline-block object-cover h-10 w-10 
                                         rounded-full ring-2 ring-slate-100'
-                                        width={300}
-                                        height={100}
-                                    />
+                                            width={300}
+                                            height={100}
+                                            key={index}
+                                        />
+                                    ))}
                                 </div>
 
                                 <div
