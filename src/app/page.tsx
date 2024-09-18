@@ -3,29 +3,12 @@ import { Icons } from '@/components/Icons';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Phone from '@/components/Phone';
 import { Reviews } from '@/components/Reviews';
-import { Check, Star } from 'lucide-react';
+import { Check } from 'lucide-react';
 import Image from 'next/image';
+import userReview from '@/components/userReview';
 
 export default function Home() {
-    const reviewUser = [
-        {
-            description1:
-                'The case feels durable and I even got a compliment on the design. Had the case for two and a half months now and',
-            highlightdescrition: 'the image is super clear',
-            description2:
-                ', on the case I had before, the image started fading into yellow-ish color after a couple weeks. Love it.',
-            userImg: '/users/user-1.png',
-            name: 'Jonathan',
-        },
-        {
-            description1:
-                'I usually keep my phone together with my keys in my pocket and that led to some pretty heavy scratchmarks on all of my last phone cases. This one, besides a barely noticeable scratch on the corner,',
-            highlightdescrition: 'looks brand new after about half a year',
-            description2: '. I dig it.',
-            userImg: '/users/user-4.jpg',
-            name: 'Josh',
-        },
-    ];
+    const reviewUser = userReview
 
     return (
         <div className='bg-slate-50'>
