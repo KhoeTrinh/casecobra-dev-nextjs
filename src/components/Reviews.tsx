@@ -167,7 +167,7 @@ export function Reviews() {
                 aria-hidden='true'
                 alt=''
                 src='/what-people-are-buying.png'
-                className='absolute select-none hidden xl:block -left-32 top-1/3'
+                className='absolute select-none hidden xl:block -left-56 top-1/4'
                 width={300}
                 height={100}
             />
