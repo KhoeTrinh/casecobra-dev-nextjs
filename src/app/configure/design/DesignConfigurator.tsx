@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { Rnd } from 'react-rnd';
 import { RadioGroup } from '@headlessui/react';
 import { useState } from 'react';
-import { color } from 'framer-motion';
 import { COLORS } from '@/validators/option-validator';
 import { Label } from '@/components/ui/label';
 
@@ -134,7 +133,7 @@ const DesignConfigurator = ({
                                                 cn(
                                                     'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent',
                                                     {
-                                                        [`${color.tw}`]:
+                                                        [`border-${color.tw}`]:
                                                             active ||
                                                             checked,
                                                     }
