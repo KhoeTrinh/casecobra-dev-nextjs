@@ -139,7 +139,7 @@ function ReviewGrid() {
                     />
                     <ReviewColumn
                         reviews={[...column2, ...column3[1]]}
-                        className='hidden md:block'
+                        className='hidden lg:block'
                         reviewClassName={(reviewIndex) =>
                             reviewIndex >= column2.length
                                 ? 'lg:hidden'
