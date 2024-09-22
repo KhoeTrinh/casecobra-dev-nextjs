@@ -44,7 +44,7 @@ export const descriptionn = [
 ];
 
 export const description = [
-    'High-quality silicone material',
+    'High-quality silicon material',
     'Scratch and fingerprint resistant coating',
     'Wireless charging compatible',
     '5 year print warranty',
