@@ -1,3 +1,5 @@
+import { BASE_PRICE, PRODUCT_PRICES } from '@/config/products';
+
 export const userImage = [
     'user-1.png',
     'user-2.png',
@@ -65,5 +67,24 @@ export const steps = [
         name: 'Step 3: Summary',
         description: 'Review your final design',
         url: '/preview',
+    },
+];
+
+export const previews = [
+    {
+        title: 'Highlights',
+        description: [
+            'Wireless charging compatible',
+            'TPU shock absorption',
+            'Packaging made from recycled materials',
+            '5 year print warranty',
+        ],
+    },
+    {
+        title: 'Material',
+        description: [
+            'High-quality, durable material',
+            'Scratch- and fingerprint resistant coating',
+        ],
     },
 ];

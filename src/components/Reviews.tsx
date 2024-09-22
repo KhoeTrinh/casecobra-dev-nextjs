@@ -62,7 +62,7 @@ function ReviewColumn({
     return (
         <div
             ref={columnRef}
-            className={cn('animate-marquee space-y-8 py-4', className)}
+            className={cn('animate-marquee space-y-8 py-4 mx-auto', className)}
             style={
                 { '--marquee-duration': duration } as CSSProperties
             }
@@ -162,7 +162,7 @@ function ReviewGrid() {
 
 export function Reviews() {
     return (
-        <MaxWidthWrapper className='relative max-w-5xl'>
+        <MaxWidthWrapper className='relative max-w-2xl md:max-w-5xl'>
             <Image
                 aria-hidden='true'
                 alt=''

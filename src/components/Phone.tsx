@@ -32,7 +32,7 @@ const Phone = ({ imgSrc, className, dark = false, ...props }: Props) => {
                 <Image
                     src={imgSrc}
                     alt=''
-                    className='object-cover'
+                    className='object-cover min-h-full min-w-full'
                     width={300}
                     height={100}
                 />
