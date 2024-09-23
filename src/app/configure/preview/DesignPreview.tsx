@@ -11,12 +11,17 @@ import { useMutation } from '@tanstack/react-query';
 import { ArrowRight, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Confetti from 'react-dom-confetti';
+import { createCheckoutSession } from '@/app/configure/preview/action';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 type Props = {
     configuration: Configuration;
 };
 
 const DesignPreview = ({ configuration }: Props) => {
+    const router = useRouter();
+    const { toast } = useToast();
     const [showConfetti, setShowConfetti] = useState(false);
     useEffect(() => setShowConfetti(true));
 
@@ -33,10 +38,22 @@ const DesignPreview = ({ configuration }: Props) => {
     if (finish === 'textured')
         totalPrice += PRODUCT_PRICES.finish.textured;
 
-    const {} = useMutation({
+    const { mutate: createPaymentSession } = useMutation({
         mutationKey: ['get-checkout-session'],
-        mutationFn: 
-    })
+        mutationFn: createCheckoutSession,
+        onSuccess: ({ url }) => {
+            if (url) router.push(url);
+            else throw new Error('Unable to retrieve payment URL');
+        },
+        onError: () => {
+            toast({
+                title: 'Something went wrong',
+                description:
+                    'There was an error on our end, please try again.',
+                variant: 'destructive',
+            });
+        },
+    });
 
     return (
         <>
@@ -153,7 +170,7 @@ const DesignPreview = ({ configuration }: Props) => {
                         </div>
 
                         <div className='mt-8 flex justify-end pb-12'>
-                            <Button className='px-4 sm:px-6 lg:px-8'>
+                            <Button onClick={() => createPaymentSession({configId: configuration.id})} className='px-4 sm:px-6 lg:px-8'>
                                 Check out{' '}
                                 <ArrowRight className='h-4w-4 ml-1.5 inline' />
                             </Button>
