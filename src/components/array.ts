@@ -1,5 +1,3 @@
-import { BASE_PRICE, PRODUCT_PRICES } from '@/config/products';
-
 export const userImage = [
     'user-1.png',
     'user-2.png',

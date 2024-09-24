@@ -26,7 +26,6 @@ import {
     ArrowRight,
     CheckIcon,
     ChevronsUpDown,
-    Radio,
 } from 'lucide-react';
 import { BASE_PRICE } from '@/config/products';
 import { useUploadThing } from '@/lib/uploadthing';

@@ -14,6 +14,8 @@ import Confetti from 'react-dom-confetti';
 import { createCheckoutSession } from '@/app/configure/preview/action';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
+import LoginModal from '@/components/LoginModal';
 
 type Props = {
     configuration: Configuration;
@@ -22,8 +24,12 @@ type Props = {
 const DesignPreview = ({ configuration }: Props) => {
     const router = useRouter();
     const { toast } = useToast();
-    const [showConfetti, setShowConfetti] = useState(false);
-    useEffect(() => setShowConfetti(true));
+    const { id } = configuration;
+    const { user } = useKindeBrowserClient();
+    const [isLoadingModalOpen, setIsLoadingModalOpen] =
+        useState<boolean>(false);
+    const [showConfetti, setShowConfetti] = useState<boolean>(false);
+    useEffect(() => setShowConfetti(true), []);
 
     const { color, model, finish, material } = configuration;
     const tw = COLORS.find(
@@ -55,6 +61,15 @@ const DesignPreview = ({ configuration }: Props) => {
         },
     });
 
+    const handleCheckout = () => {
+        if (user) {
+            createPaymentSession({ configId: id });
+        } else {
+            localStorage.setItem('configurationId', id);
+            setIsLoadingModalOpen(true);
+        }
+    };
+
     return (
         <>
             <div
@@ -67,6 +82,11 @@ const DesignPreview = ({ configuration }: Props) => {
                     config={{ elementCount: 200, spread: 90 }}
                 />
             </div>
+
+            <LoginModal
+                isOpen={isLoadingModalOpen}
+                setIsOpen={setIsLoadingModalOpen}
+            />
 
             <div
                 className='mt-20 flex flex-col items-center md:grid 
@@ -170,7 +190,10 @@ const DesignPreview = ({ configuration }: Props) => {
                         </div>
 
                         <div className='mt-8 flex justify-end pb-12'>
-                            <Button onClick={() => createPaymentSession({configId: configuration.id})} className='px-4 sm:px-6 lg:px-8'>
+                            <Button
+                                onClick={() => handleCheckout()}
+                                className='px-4 sm:px-6 lg:px-8'
+                            >
                                 Check out{' '}
                                 <ArrowRight className='h-4w-4 ml-1.5 inline' />
                             </Button>
